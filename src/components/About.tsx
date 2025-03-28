@@ -22,7 +22,7 @@ const About = ({ setCurrentSection, darkMode }: { setCurrentSection: (section: '
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-to-br from-purple-200 to-pink-200 rounded-2xl transform rotate-6"></div>
               <img
-                src="/perfil/yo.jpg"
+                src="./image/perfil/yo.jpg"
                 alt="Camila - Diseñadora Gráfica"
                 className="relative rounded-2xl shadow-xl w-full h-[600px] object-cover"
               />

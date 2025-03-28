@@ -14,9 +14,9 @@ function App() {
   // Actualizar la fuente del logo al cambiar el modo oscuro
   useEffect(() => {
     if (darkMode) {
-      setLogoSrc('/logo/logoblack.png');
+      setLogoSrc('./image/logo/logoblack.png');
     } else {
-      setLogoSrc('/logo/logo.png');
+      setLogoSrc('./image/logo/logo.png');
     }
   }, [darkMode]);
 
