@@ -99,23 +99,43 @@ const About = ({ setCurrentSection, darkMode }: { setCurrentSection: (section: '
       </div>
 
       {/* Flechas de navegación con el mismo diseño que las del Portfolio */}
-      <motion.button
+      <motion.div
         animate={{ x: [0, -10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
-        onClick={() => setCurrentSection('hero')}
-        className={`absolute left-8 top-1/2 transform -translate-y-1/2 ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-md p-3 rounded-full hover:bg-gray-100 transition`}
+        className={`absolute left-8 top-1/2 transform -translate-y-1/2 md:block hidden ${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-600'} shadow-md p-3 rounded-full hover:bg-gray-100 transition`}
+        onClick={() => setCurrentSection('portfolio')}
       >
-        <ChevronLeft size={32} className={`${darkMode ? 'text-white' : 'text-gray-600'} hover:text-gray-800`} />
-      </motion.button>
-      
-      <motion.button
+        <ChevronLeft size={32} className="transition-colors" />
+      </motion.div>
+
+      <motion.div
         animate={{ x: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
-        className={`absolute right-8 top-1/2 transform -translate-y-1/2 ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-md p-3 rounded-full hover:bg-gray-100 transition`}
-        onClick={() => setCurrentSection('portfolio')}      
+        className={`absolute right-8 top-1/2 transform -translate-y-1/2 md:block hidden ${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-600'} shadow-md p-3 rounded-full hover:bg-gray-100 transition`}
+        onClick={() => setCurrentSection('hero')}
       >
-        <ChevronRight size={32} className={`${darkMode ? 'text-white' : 'text-gray-600'} hover:text-gray-800`} />
-      </motion.button>
+        <ChevronRight size={32} className="transition-colors" />
+      </motion.div>
+
+      {/* Flechas en la parte inferior para pantallas pequeñas */}
+      <div className="md:hidden absolute bottom-2 left-1/2 right-1/2 transform -translate-x-1/2 flex justify-around w-48">
+        <motion.div
+          animate={{ x: [0, -10, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+          className={`${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-600'} shadow-md p-3 rounded-full hover:bg-gray-100 transition`}
+          onClick={() => setCurrentSection('hero')}
+        >
+          <ChevronLeft size={32} className="transition-colors" />
+        </motion.div>
+        <motion.div
+          animate={{ x: [0, 10, 0] }}
+          transition={{ repeat: Infinity, duration: 2 }}
+          className={`${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-600'} shadow-md p-3 rounded-full hover:bg-gray-100 transition`}
+          onClick={() => setCurrentSection('portfolio')}
+        >
+          <ChevronRight size={32} className="transition-colors" />
+        </motion.div>
+      </div>
     </section>
   );
 };

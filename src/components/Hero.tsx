@@ -56,23 +56,42 @@ const Hero: React.FC<HeroProps> = ({ setCurrentSection, darkMode }) => {
 
         {/* Flecha izquierda - Retroceder */}
         <motion.div
+        animate={{ x: [0, -10, 0] }}
+        transition={{ repeat: Infinity, duration: 2 }}
+        className={`absolute left-8 top-1/2 transform -translate-y-1/2 md:block hidden ${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-600'} shadow-md p-3 rounded-full hover:bg-gray-100 transition`}
+        onClick={() => setCurrentSection('portfolio')}
+      >
+        <ChevronLeft size={32} className="transition-colors" />
+      </motion.div>
+
+      <motion.div
+        animate={{ x: [0, 10, 0] }}
+        transition={{ repeat: Infinity, duration: 2 }}
+        className={`absolute right-8 top-1/2 transform -translate-y-1/2 md:block hidden ${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-600'} shadow-md p-3 rounded-full hover:bg-gray-100 transition`}
+        onClick={() => setCurrentSection('hero')}
+      >
+        <ChevronRight size={32} className="transition-colors" />
+      </motion.div>
+
+      {/* Flechas en la parte inferior para pantallas pequeñas */}
+      <div className="md:hidden absolute bottom-2 left-1/2 right-1/2 transform -translate-x-1/2 flex justify-around w-48">
+        <motion.div
           animate={{ x: [0, -10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className={`absolute left-8 top-1/2 transform -translate-y-1/2 bg-white shadow-md p-3 rounded-full hover:bg-gray-100 transition ${darkMode ? 'bg-gray-700 text-white hover:bg-gray-600' : ''}`}
+          className={`${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-600'} shadow-md p-3 rounded-full hover:bg-gray-100 transition`}
           onClick={() => setCurrentSection('contact')}
         >
-          <ChevronLeft size={32} className={`${darkMode ? 'text-white' : 'text-gray-600'} hover:${darkMode ? 'text-gray-400' : 'text-gray-800'} transition-colors`} />
+          <ChevronLeft size={32} className="transition-colors" />
         </motion.div>
-
-        {/* Flecha derecha - Avanzar */}
         <motion.div
           animate={{ x: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
-          className={`absolute right-8 top-1/2 transform -translate-y-1/2 bg-white shadow-md p-3 rounded-full hover:bg-gray-100 transition ${darkMode ? 'bg-gray-700 text-white hover:bg-gray-600' : ''}`}
+          className={`${darkMode ? 'bg-gray-800 text-gray-300' : 'bg-white text-gray-600'} shadow-md p-3 rounded-full hover:bg-gray-100 transition`}
           onClick={() => setCurrentSection('about')}
         >
-          <ChevronRight size={32} className={`${darkMode ? 'text-white' : 'text-gray-600'} hover:${darkMode ? 'text-gray-400' : 'text-gray-800'} transition-colors`} />
+          <ChevronRight size={32} className="transition-colors" />
         </motion.div>
+      </div>
       </div>
     </section>
   );
